@@ -11,7 +11,7 @@ terraform plan
 
 ## TODO
 
-Test AWS template using terraform and infracost
-Test GCP template using infracost
-Set up GCP and test GCP template using terraform
-Design framework to resolve and insert variables via command line
+- Test AWS template using terraform and infracost
+- Test GCP template using infracost
+- Set up GCP and test GCP template using terraform
+- Design framework to resolve and insert variables via command line
