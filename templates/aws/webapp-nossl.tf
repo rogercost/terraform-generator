@@ -6,7 +6,7 @@ variable "startup_script" {
   default     = <<-EOF
               #!/bin/bash
               echo "Hello, World" > index.html
-              nohup python3 -m http.server ${var.server_port} --bind 0.0.0.0 &
+              nohup python3 -m http.server 8080 --bind 0.0.0.0 &
               EOF
 }
 
@@ -36,7 +36,7 @@ variable "health_check_timeout" {
 
 ######## Resolved variables based on user input. The user's vendor agnostic specifications must be translated to vendor-specific terms.
 
-variable "instance_type" {
+variable "aws_instance_type" {
   description = "The type of the machine instance to start, from the AWS catalog."
   type        = string
   default     = "t2.micro"
@@ -87,7 +87,7 @@ resource "aws_security_group" "instance" {
 
 resource "aws_launch_configuration" "example" {
   image_id        = var.aws_ami
-  instance_type   = var.instance_type
+  instance_type   = var.aws_instance_type
   security_groups = [aws_security_group.instance.id]
 
   user_data = var.startup_script
